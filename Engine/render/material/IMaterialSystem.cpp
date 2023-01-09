@@ -1,0 +1,200 @@
+#include "IMaterialSystem.h"
+#include "KeyWordUtil.h"
+
+NS_JYE_BEGIN
+
+IMaterialSystem::InputParameter::InputParameter(RHIDefine::ParameterUsage pu, RHIDefine::ParameterSlot ps, const String& name)
+	:Usage(pu)
+	, Slot(ps)
+	, Name(name)
+{
+
+}
+
+//
+// IMaterialSystem
+//
+IMaterialSystem* IMaterialSystem::s_instance = nullptr;
+
+IMaterialSystem::IMaterialSystem()
+	: m_AttributeIndex(RHIDefine::PS_ERRORCODE)
+	, m_UniformIndex(RHIDefine::PS_MATERIAL_USER_BEGIN)
+	, m_InternalIndex(RHIDefine::PS_INTERNAL_USE_BEING)
+	, m_UnknownIndex(RHIDefine::PS_UNKNOWN_BEGIN)
+{
+#define MAKE_STRING_ENUM(x,y) (RHIDefine::ParameterSlot)RHIDefine::x##y, #y
+
+	{//attribute
+		NewParameterSlot(RHIDefine::SU_ATTRIBUTE, MAKE_STRING_ENUM(PS_, ATTRIBUTE_POSITION));
+		NewParameterSlot(RHIDefine::SU_ATTRIBUTE, MAKE_STRING_ENUM(PS_, ATTRIBUTE_COORDNATE0));
+		NewParameterSlot(RHIDefine::SU_ATTRIBUTE, MAKE_STRING_ENUM(PS_, ATTRIBUTE_COORDNATE1));
+		NewParameterSlot(RHIDefine::SU_ATTRIBUTE, MAKE_STRING_ENUM(PS_, ATTRIBUTE_COORDNATE2));
+		NewParameterSlot(RHIDefine::SU_ATTRIBUTE, MAKE_STRING_ENUM(PS_, ATTRIBUTE_COORDNATE3));
+		NewParameterSlot(RHIDefine::SU_ATTRIBUTE, MAKE_STRING_ENUM(PS_, ATTRIBUTE_NORMAL));
+		NewParameterSlot(RHIDefine::SU_ATTRIBUTE, MAKE_STRING_ENUM(PS_, ATTRIBUTE_COLOR0));
+		NewParameterSlot(RHIDefine::SU_ATTRIBUTE, MAKE_STRING_ENUM(PS_, ATTRIBUTE_COLOR1));
+		NewParameterSlot(RHIDefine::SU_ATTRIBUTE, MAKE_STRING_ENUM(PS_, ATTRIBUTE_TANGENT));
+		NewParameterSlot(RHIDefine::SU_ATTRIBUTE, MAKE_STRING_ENUM(PS_, ATTRIBUTE_BINORMAL));
+		NewParameterSlot(RHIDefine::SU_ATTRIBUTE, MAKE_STRING_ENUM(PS_, ATTRIBUTE_BONE_INEX));
+		NewParameterSlot(RHIDefine::SU_ATTRIBUTE, MAKE_STRING_ENUM(PS_, ATTRIBUTE_BONE_WEIGHT));
+	}
+
+	{//uniform
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, SYSTEM_TIME));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, SYSTEM_TIME_SPAN));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, ANIMATION_REAL_ARRAY));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, ANIMATION_DUAL_ARRAY));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, ANIMATION_MATRIX_ARRAY));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, INSTANCE_CBUFFER0));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, INSTANCE_CBUFFER1));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, LOCALWORLD_TRANSFORM));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, WORLDLOCAL_TRANSFROM));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, LOCALWORLD_ROTATION));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, LOCALSCREEN_TRANSVIEWPROJ));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, CAMERA_WORLDROTATION));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, CAMERA_WORLDPOSITION));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, CAMERA_WORLDDIRECTION));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, CAMERA_VIEW));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, CAMERA_PROJECTION));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, CAMERA_VIEWPROJ));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, CAMERA_VIEWPROJ_INV));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, CAMERA_LINERPARAM));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, CAMERA_LINEARPARAMBIAS));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, CAMERA_RESOLUTION));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, CAMERA_RESOLUTION_INV));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, CAMERA_RESOLUTION_HALF_INV));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, CAMERA_SHADOWRANGE));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, LIGHT_CAMERA_VIEW));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, LIGHT_CAMERA_PROJECTION));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, LIGHT_CAMERA_LINEARPARAM));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, LIGHT_CAMERA_POSITION));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, LIGHT_POSITION));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, LIGHT_COLOR));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, AMBIENT_COLOR));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, LIGHT_ANGLE));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, LIGHT_INNER_DIFF_INV));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, LIGHT_RANGE_INV));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, LIGHT_ATTENUATION));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, LIGHT_PARAM));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, LIGHT_VERTEX_DIRECTION));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, LIGHT_GIVEN_DIRECTION));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, MATERIAL_AMBIENT));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, MATERIAL_DIFFUSE));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, MATERIAL_SPECULAR));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, MATERIAL_SPECULAR_LEVEL));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, MATERIAL_SHININESS));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_AMBIENT));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_DIFFUSE));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_SHADOW_DEPTH));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_HAIR_SHADOW_DEPTH));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_HAIR_SHADOW_MASK));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_GRAP));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_TRANSPARENT_SHADOW));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_SPECULAR));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_SPLEVEL));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_GLOSSINESS));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_ILLUMINATION));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_OPACITY));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_FITER));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_BUMP));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_REFLECTION));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_REFRACTION));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_DISPLACEMENT));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_GBUFFER_A));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_GBUFFER_B));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_GBUFFER_C));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_GBUFFER_DEPTH));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, TEXTURE_SCENE_DEPTH));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, GAUSSIAN_BLUR_STEP));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, WORLD_POSITION));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, WORLD_SCALE));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, POINT_COLOR));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, DEVICE_COORDINATE_Y_FLIP));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, HAIR_FIRSTLAYER_DEPTH));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, HAIR_SECONDLAYER_DEPTH));
+		NewParameterSlot(RHIDefine::SU_UNIFORM, MAKE_STRING_ENUM(PS_, HAIR_THIRDLAYER_DEPTH));
+	}
+
+	{
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, WORLDSPACE_POSITION));
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, WORLDSPACE_NORMAL));
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, WORLDSPACE_TANGENT));
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, WORLDSPACE_BINORMAL));
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, WORLDSPACE_VIEWDIRECTION));
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, CAMERASPACE_POSITION));
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, SCREENSPACE_POSITION));
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, SCREENSPACE_COORDNATE));
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, SCREENSPACE_NORMAL));
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, SCREENSPACE_TANGENT));
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, SCREENSPACE_BINORMAL));
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, WORLDSPACE_LIGHT_DISTANCE));
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, WORLDSPACE_DEPTH));
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, LIGHTING_DIFFUSE));
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, LIGHTING_SPECULAR));
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, SURFACE_COLOR));
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, LIGHTSPACE_POSITION));
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, LIGHTSPACE_COORD));
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, LIGHTSPACE_DEPTH));
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, WORLDSPACE_LIGHTCAMERA_DISTANCE));
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, LOCALSPACE_POSITION));
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, SHADOWMAP_COLOR));
+
+
+		NewParameterSlot(RHIDefine::SU_INTERNAL, MAKE_STRING_ENUM(PS_, GAUSSIAN_COORD_ARRAY));
+	}
+
+	KeyWordUtil::Init();
+}
+
+IMaterialSystem::~IMaterialSystem()
+{
+	KeyWordUtil::Clean();
+}
+	
+IMaterialSystem* IMaterialSystem::Instance()
+{
+	if (s_instance == nullptr)
+	{
+		s_instance = new IMaterialSystem();
+	}
+	return s_instance;
+}
+
+void IMaterialSystem::Destory()
+{
+	SAFE_DELETE(s_instance);
+}
+
+RHIDefine::ParameterSlot IMaterialSystem::NewParameterSlot(RHIDefine::ParameterUsage pu, const String& name)
+{
+	RHIDefine::ParameterSlot ps = RHIDefine::PS_ERRORCODE;
+	m_Mutex.lock();
+	RegisteredSlot::iterator it = m_RegisteredSlot.find(name);
+	if (m_RegisteredSlot.end() != it)
+	{
+		ps = it->second;
+	}
+	else
+	{
+		switch (pu)
+		{
+		case RHIDefine::SU_ATTRIBUTE:
+			ps = static_cast<RHIDefine::ParameterSlot>(++m_AttributeIndex);
+			break;
+		case RHIDefine::SU_UNIFORM:
+			ps = static_cast<RHIDefine::ParameterSlot>(++m_UniformIndex);
+			break;
+		case RHIDefine::SU_INTERNAL:
+			ps = static_cast<RHIDefine::ParameterSlot>(++m_InternalIndex);
+			break;
+		case RHIDefine::SU_UNKNOWN:
+			ps = static_cast<RHIDefine::ParameterSlot>(++m_UnknownIndex);
+			break;
+		}
+		NewParameterSlot(pu, ps, name);
+	}
+	m_Mutex.unlock();
+	return ps;
+}
+
+NS_JYE_END

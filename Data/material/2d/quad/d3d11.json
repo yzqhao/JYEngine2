@@ -1,0 +1,45 @@
+{
+  "Always": {
+    "ALPHA_MODE": [ "ALPHA_OFF" ],
+    "ATTRIBUTES": [ {
+      "attID": "1",
+      "attName": "POSITION"
+    }, {
+      "attID": "16",
+      "attName": "TEXCOORD"
+    } ],
+    "COLOR_MASK": [ "COLOR_RGBA" ],
+    "DRAW_MODE": [ "CULL_FACE_BACK", "DEPTH_MASK_ON", "DEPTH_TEST_ON", "DEPTH_FUNCTION_LESS" ],
+    "LIGHT_MODE": [ "ALWAYS" ],
+    "POLYGON_MODE": [],
+    "Programs": [ {
+      "keyWords": [],
+      "psBufferSize": 0,
+      "psShader": [ 0, 61360, 61048 ],
+      "psUniforms": [ 0 ],
+      "shaderApi": "d3d11",
+      "vsAttributes": [ 0, 1 ],
+      "vsBufferSize": 0,
+      "vsShader": [ 0, 0, 61360 ],
+      "vsUniforms": []
+    } ],
+    "SCISSOR_MODE": [],
+    "STENCIL_MODE": [ "STENCIL_OFF" ],
+    "UNIFORMS": [ {
+      "varName": "_MainTex",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "sampler2D"
+    } ]
+  },
+  "Attributes": [],
+  "PassNames": [ "Always" ],
+  "Properties": {
+    "_MainTex": [ "Main Color", "TEXTURE2D", [ "white" ] ]
+  },
+  "RenderQueue": "Transparent",
+  "ShaderName": "FullScreenQuad",
+  "Version": 1
+}

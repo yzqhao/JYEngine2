@@ -1,0 +1,87 @@
+#pragma once
+
+#include "ParserMaterial.h"
+
+namespace OrangeFilter {
+
+	class LuaMaterialParse
+	{
+	private:
+		enum Material_Parser_Constant
+		{
+			//alpha混合相关
+			MPC_ERRORCODE = 0,//Lua得不到数据的时候会设置数据为0
+			MPC_ALPAH_OFF,
+			MPC_ALPAH_COVERAGE,
+			MPC_ALPAH_BLEND,
+			MPC_ZERO,
+			MPC_ONE,
+			MPC_SRC_COLOR,
+			MPC_ONE_MINUS_SRC_COLOR,
+			MPC_SRC_ALPHA,
+			MPC_ONE_MINUS_SRC_ALPHA,
+			MPC_DST_ALPHA,
+			MPC_ONE_MINUS_DST_ALPHA,
+			MPC_DST_COLOR,
+			MPC_ONE_MINUS_DST_COLOR,
+
+			//渲染状态相关
+			MPC_DEPTH_TEST_ON,
+			MPC_DEPTH_TEST_OFF,
+			MPC_DEPTH_MASK_ON,
+			MPC_DEPTH_MASK_OFF,
+			MPC_DEPTH_FUNCTION_NEVER,
+			MPC_DEPTH_FUNCTION_LESS,
+			MPC_DEPTH_FUNCTION_GREATER,
+			MPC_DEPTH_FUNCTION_ALWAYS,
+			MPC_DEPTH_FUNCTION_GEQUAL,
+			MPC_DEPTH_FUNCTION_LEQUAL,
+			MPC_CULL_FACE_OFF,
+			MPC_CULL_FACE_BACK,
+			MPC_CULL_FACE_FRONT,
+			MPC_CULL_FACE_BACK_CW,
+			MPC_CULL_FACE_FRONT_CW,
+
+			//Color Mask
+			MPC_COLOR_NONE,
+			MPC_COLOR_RGBA,
+			MPC_COLOR_RGB,
+
+			//Stencil
+			MPC_STENCIL_ON,
+			MPC_STENCIL_OFF,
+			MPC_STENCIL_FUNCTION_NEVER,
+			MPC_STENCIL_FUNCTION_LESS,
+			MPC_STENCIL_FUNCTION_EQUAL,
+			MPC_STENCIL_FUNCTION_LEQUAL,
+			MPC_STENCIL_FUNCTION_GREATER,
+			MPC_STENCIL_FUNCTION_NOTEQUAL,
+			MPC_STENCIL_FUNCTION_GEQUAL,
+			MPC_STENCIL_FUNCTION_ALWAYS,
+			MPC_STENCIL_OPERATION_ZERO,
+			MPC_STENCIL_OPERATION_ONE,
+			MPC_STENCIL_OPERATION_KEEP,
+			MPC_STENCIL_OPERATION_REPLACE,
+			MPC_STENCIL_OPERATION_INCR,
+			MPC_STENCIL_OPERATION_DECR,
+			MPC_STENCIL_OPERATION_INVERT,
+			MPC_STENCIL_OPERATION_INCR_WRAP,
+			MPC_STENCIL_OPERATION_DECR_WRAP,
+
+			//Polygon
+			MPC_POLYGON_POINT,
+			MPC_POLYGON_LINE,
+			MPC_POLYGON_TRIANGLE,
+
+		};
+	public:
+		LuaMaterialParse();
+		virtual ~LuaMaterialParse();
+		bool ParseMaterial(const std::string& path, ParserMaterial& matData);
+		void Initialize(struct lua_State* m_luaState);
+	private:
+		void _ParsePropertys(ParserMaterial& matData);
+		void _ParseRenderQueue(ParserMaterial& matData);
+	};
+
+}

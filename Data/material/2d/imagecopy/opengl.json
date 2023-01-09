@@ -1,0 +1,49 @@
+{
+  "Always": {
+    "ALPHA_MODE": [ "ALPHA_OFF" ],
+    "ATTRIBUTES": [],
+    "COLOR_MASK": [ "COLOR_RGBA" ],
+    "DRAW_MODE": [ "CULL_FACE_OFF", "DEPTH_MASK_OFF", "DEPTH_TEST_OFF", "DEPTH_FUNCTION_LESS" ],
+    "LIGHT_MODE": [ "ALWAYS" ],
+    "POLYGON_MODE": [],
+    "Programs": [ {
+      "keyWords": [],
+      "psBufferSize": 0,
+      "psShader": "#version 430 \n// end extensions\n\nvoid compiler_internal_AdjustInputSemantic(inout vec4 TempVariable)\n{\n}\n\nvoid compiler_internal_AdjustOutputSemantic(inout vec4 Src)\n{\n}\n\nbool compiler_internal_AdjustIsFrontFacing(bool isFrontFacing)\n{\n\treturn false;\n}\nuniform sampler2D TEXTURE_DIFFUSE;\nINTERFACE_BLOCK(0, , in , TEXCOORD0, vec2, Data) in_TEXCOORD0;\nINTERFACE_LOCATION(0) out vec4 out_Target0;\nvoid main()\n{\n\tout_Target0.xyzw = texture(TEXTURE_DIFFUSE,in_TEXCOORD0.Data);\n}\n\n",
+      "psUniforms": [],
+      "shaderApi": "opengl",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": "#version 430 \n// end extensions\n\nvoid compiler_internal_AdjustInputSemantic(inout vec4 TempVariable)\n{\n}\n\nvoid compiler_internal_AdjustOutputSemantic(inout vec4 Src)\n{\n}\n\nbool compiler_internal_AdjustIsFrontFacing(bool isFrontFacing)\n{\n\treturn false;\n}\nuniform float DEVICE_COORDINATE_Y_FLIP;\nin vec4 in_POSITION;\nin vec2 in_TEXCOORD0;\nINTERFACE_BLOCK(0, , out , TEXCOORD0, vec2, Data) out_TEXCOORD0;\nvoid main()\n{\n\tvec4 v0;\n\tv0.xzw = vec3(1.000000e+00,1.000000e+00,1.000000e+00);\n\tv0.y = DEVICE_COORDINATE_Y_FLIP;\n\tgl_Position.xyzw = (v0*in_POSITION);\n\tout_TEXCOORD0.Data.xy = in_TEXCOORD0;\n}\n\n",
+      "vsUniforms": [ 0, 1 ]
+    } ],
+    "SCISSOR_MODE": [ "%_SCISSORX", "%_SCISSORY", "%_SCISSORZ", "%_SCISSORW" ],
+    "STENCIL_MODE": [ "STENCIL_OFF" ],
+    "UNIFORMS": [ {
+      "varName": "DEVICE_COORDINATE_Y_FLIP",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float"
+    }, {
+      "varName": "TEXTURE_DIFFUSE",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "sampler2D"
+    } ]
+  },
+  "Attributes": [],
+  "PassNames": [ "Always" ],
+  "Properties": {
+    "_SCISSORW": [ "scissor w", "FLOAT", [ 0.0 ] ],
+    "_SCISSORX": [ "scissor x", "FLOAT", [ 0.0 ] ],
+    "_SCISSORY": [ "scissor y", "FLOAT", [ 0.0 ] ],
+    "_SCISSORZ": [ "scissor z", "FLOAT", [ 0.0 ] ]
+  },
+  "RenderQueue": "PostEffect",
+  "ShaderName": "imagecopy",
+  "Version": 1
+}

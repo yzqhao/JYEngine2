@@ -1,0 +1,67 @@
+{
+  "Attributes": [],
+  "ForwardBase": {
+    "ALPHA_MODE": [ "ALPHA_BLEND", "SRC_ALPHA", "ONE_MINUS_SRC_ALPHA", "SRC_ALPHA", "ONE" ],
+    "ATTRIBUTES": [],
+    "COLOR_MASK": [ "COLOR_RGBA" ],
+    "DRAW_MODE": [ "CULL_FACE_OFF", "DEPTH_MASK_OFF", "DEPTH_TEST_ON", "DEPTH_FUNCTION_LESS" ],
+    "LIGHT_MODE": [],
+    "POLYGON_MODE": [],
+    "Programs": [ {
+      "keyWords": [],
+      "psBufferSize": 0,
+      "psShader": "#version 100 \n// end extensions\nprecision mediump float;\nprecision mediump int;\n\n#ifndef DONTEMITSAMPLERDEFAULTPRECISION\nprecision mediump sampler2D;\nprecision mediump samplerCube;\n\n#endif\n\n#ifdef TEXCOORDPRECISIONWORKAROUND\nvec4 texture2DTexCoordPrecisionWorkaround(sampler2D p, vec2 tcoord)\n{\n\treturn texture2D(p, tcoord);\n}\n#define texture2D texture2DTexCoordPrecisionWorkaround\n#endif\n\nvoid compiler_internal_AdjustInputSemantic(inout vec4 TempVariable)\n{\n}\n\nvoid compiler_internal_AdjustOutputSemantic(inout vec4 Src)\n{\n}\n\nbool compiler_internal_AdjustIsFrontFacing(bool isFrontFacing)\n{\n\treturn false;\n}\nuniform highp sampler2D TEXTURE_DIFFUSE;\nvarying highp vec2 var_TEXCOORD0;\nvoid main()\n{\n\tgl_FragColor.xyzw = texture2D(TEXTURE_DIFFUSE,var_TEXCOORD0);\n}\n\n",
+      "psUniforms": [],
+      "shaderApi": "gles2",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": "#version 100 \n// end extensions\n\nvoid compiler_internal_AdjustInputSemantic(inout vec4 TempVariable)\n{\n}\n\nvoid compiler_internal_AdjustOutputSemantic(inout vec4 Src)\n{\n}\n\nbool compiler_internal_AdjustIsFrontFacing(bool isFrontFacing)\n{\n\treturn false;\n}\nuniform highp float DEVICE_COORDINATE_Y_FLIP;\nuniform highp mat4 CAMERA_PROJECTION;\nuniform highp mat4 CAMERA_VIEW;\nuniform highp mat4 LOCALWORLD_TRANSFORM;\nattribute highp vec4 in_POSITION;\nattribute highp vec2 in_TEXCOORD0;\nattribute highp vec2 in_TEXCOORD1;\nvarying highp vec2 var_TEXCOORD0;\nvoid main()\n{\n\thighp vec3 v0;\n\thighp vec4 v1;\n\thighp vec4 v2;\n\thighp vec4 v3;\n\thighp vec4 v4;\n\thighp vec4 v5;\n\tv5.xyzw = ((LOCALWORLD_TRANSFORM[0].wwww*CAMERA_VIEW[3])+((LOCALWORLD_TRANSFORM[0].zzzz*CAMERA_VIEW[2])+((LOCALWORLD_TRANSFORM[0].yyyy*CAMERA_VIEW[1])+(LOCALWORLD_TRANSFORM[0].xxxx*CAMERA_VIEW[0]))));\n\tv2.xyzw = v5;\n\tv5.xyzw = (LOCALWORLD_TRANSFORM[1].xxxx*CAMERA_VIEW[0]);\n\thighp vec4 v6;\n\tv6.xyzw = ((LOCALWORLD_TRANSFORM[1].wwww*CAMERA_VIEW[3])+((LOCALWORLD_TRANSFORM[1].zzzz*CAMERA_VIEW[2])+((LOCALWORLD_TRANSFORM[1].yyyy*CAMERA_VIEW[1])+v5)));\n\tv3.xyzw = v6;\n\tv6.xyzw = (LOCALWORLD_TRANSFORM[2].xxxx*CAMERA_VIEW[0]);\n\thighp vec4 v7;\n\tv7.xyzw = ((LOCALWORLD_TRANSFORM[2].wwww*CAMERA_VIEW[3])+((LOCALWORLD_TRANSFORM[2].zzzz*CAMERA_VIEW[2])+((LOCALWORLD_TRANSFORM[2].yyyy*CAMERA_VIEW[1])+v6)));\n\tv4.xyzw = v7;\n\tv7.xyzw = (LOCALWORLD_TRANSFORM[3].xxxx*CAMERA_VIEW[0]);\n\thighp vec4 v8;\n\tv8.xyzw = ((((LOCALWORLD_TRANSFORM[3].wwww*CAMERA_VIEW[3])+((LOCALWORLD_TRANSFORM[3].zzzz*CAMERA_VIEW[2])+((LOCALWORLD_TRANSFORM[3].yyyy*CAMERA_VIEW[1])+v7)))*in_POSITION.wwww)+((v4*in_POSITION.zzzz)+((v3*in_POSITION.yyyy)+(v2*in_POSITION.xxxx))));\n\tv1.w = v8.w;\n\tv0.z = 0.000000e+00;\n\tv0.xy = in_TEXCOORD1;\n\tv1.xyz = (v8.xyz+v0);\n\thighp vec4 v9;\n\tv9.xzw = vec3(1.000000e+00,1.000000e+00,1.000000e+00);\n\tv9.y = DEVICE_COORDINATE_Y_FLIP;\n\tgl_Position.xyzw = (v9*((CAMERA_PROJECTION[3]*v8.wwww)+((CAMERA_PROJECTION[2]*v1.zzzz)+((CAMERA_PROJECTION[1]*v1.yyyy)+(CAMERA_PROJECTION[0]*v1.xxxx)))));\n\tvar_TEXCOORD0.xy = in_TEXCOORD0;\n}\n\n",
+      "vsUniforms": [ 0, 1, 2, 3, 4 ]
+    } ],
+    "SCISSOR_MODE": [],
+    "STENCIL_MODE": [ "STENCIL_OFF" ],
+    "UNIFORMS": [ {
+      "varName": "DEVICE_COORDINATE_Y_FLIP",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float"
+    }, {
+      "varName": "CAMERA_PROJECTION",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float4x4"
+    }, {
+      "varName": "CAMERA_VIEW",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float4x4"
+    }, {
+      "varName": "LOCALWORLD_TRANSFORM",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float4x4"
+    }, {
+      "varName": "TEXTURE_DIFFUSE",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "sampler2D"
+    } ]
+  },
+  "PassNames": [ "ForwardBase" ],
+  "Properties": {
+    "TEXTURE_DIFFUSE": [ "main Color", "TEXTURE2D", [ "white" ] ]
+  },
+  "RenderQueue": "Transparent",
+  "ShaderName": "quadtexture",
+  "Version": 1
+}

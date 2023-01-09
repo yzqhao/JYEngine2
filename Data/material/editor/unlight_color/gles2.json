@@ -1,0 +1,60 @@
+{
+  "Attributes": [],
+  "ForwardBase": {
+    "ALPHA_MODE": [ "ALPHA_BLEND", "SRC_ALPHA", "ONE_MINUS_SRC_ALPHA", "ONE", "ONE" ],
+    "ATTRIBUTES": [],
+    "COLOR_MASK": [ "COLOR_RGBA" ],
+    "DRAW_MODE": [ "CULL_FACE_BACK", "DEPTH_MASK_ON", "DEPTH_TEST_ON", "DEPTH_FUNCTION_LESS" ],
+    "LIGHT_MODE": [],
+    "POLYGON_MODE": [],
+    "Programs": [ {
+      "keyWords": [],
+      "psBufferSize": 0,
+      "psShader": "#version 100 \n// end extensions\nprecision mediump float;\nprecision mediump int;\n\n#ifndef DONTEMITSAMPLERDEFAULTPRECISION\nprecision mediump sampler2D;\nprecision mediump samplerCube;\n\n#endif\n\n#ifdef TEXCOORDPRECISIONWORKAROUND\nvec4 texture2DTexCoordPrecisionWorkaround(sampler2D p, vec2 tcoord)\n{\n\treturn texture2D(p, tcoord);\n}\n#define texture2D texture2DTexCoordPrecisionWorkaround\n#endif\n\nvoid compiler_internal_AdjustInputSemantic(inout vec4 TempVariable)\n{\n}\n\nvoid compiler_internal_AdjustOutputSemantic(inout vec4 Src)\n{\n}\n\nbool compiler_internal_AdjustIsFrontFacing(bool isFrontFacing)\n{\n\treturn false;\n}\nuniform highp vec4 POINT_COLOR;\nvoid main()\n{\n\tvec4 v0;\n\tv0.xyzw = POINT_COLOR;\n\tgl_FragColor.xyzw = v0;\n}\n\n",
+      "psUniforms": [],
+      "shaderApi": "gles2",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": "#version 100 \n// end extensions\n\nvoid compiler_internal_AdjustInputSemantic(inout vec4 TempVariable)\n{\n}\n\nvoid compiler_internal_AdjustOutputSemantic(inout vec4 Src)\n{\n}\n\nbool compiler_internal_AdjustIsFrontFacing(bool isFrontFacing)\n{\n\treturn false;\n}\nuniform highp float DEVICE_COORDINATE_Y_FLIP;\nuniform highp mat4 CAMERA_VIEWPROJ;\nuniform highp mat4 LOCALWORLD_TRANSFORM;\nattribute highp vec4 in_POSITION;\nvoid main()\n{\n\thighp vec4 v0;\n\thighp vec4 v1;\n\thighp vec4 v2;\n\thighp vec4 v3;\n\tv3.xyzw = ((LOCALWORLD_TRANSFORM[0].wwww*CAMERA_VIEWPROJ[3])+((LOCALWORLD_TRANSFORM[0].zzzz*CAMERA_VIEWPROJ[2])+((LOCALWORLD_TRANSFORM[0].yyyy*CAMERA_VIEWPROJ[1])+(LOCALWORLD_TRANSFORM[0].xxxx*CAMERA_VIEWPROJ[0]))));\n\tv0.xyzw = v3;\n\tv3.xyzw = (LOCALWORLD_TRANSFORM[1].xxxx*CAMERA_VIEWPROJ[0]);\n\thighp vec4 v4;\n\tv4.xyzw = ((LOCALWORLD_TRANSFORM[1].wwww*CAMERA_VIEWPROJ[3])+((LOCALWORLD_TRANSFORM[1].zzzz*CAMERA_VIEWPROJ[2])+((LOCALWORLD_TRANSFORM[1].yyyy*CAMERA_VIEWPROJ[1])+v3)));\n\tv1.xyzw = v4;\n\tv4.xyzw = (LOCALWORLD_TRANSFORM[2].xxxx*CAMERA_VIEWPROJ[0]);\n\thighp vec4 v5;\n\tv5.xyzw = ((LOCALWORLD_TRANSFORM[2].wwww*CAMERA_VIEWPROJ[3])+((LOCALWORLD_TRANSFORM[2].zzzz*CAMERA_VIEWPROJ[2])+((LOCALWORLD_TRANSFORM[2].yyyy*CAMERA_VIEWPROJ[1])+v4)));\n\tv2.xyzw = v5;\n\tv5.xyzw = (LOCALWORLD_TRANSFORM[3].xxxx*CAMERA_VIEWPROJ[0]);\n\thighp vec4 v6;\n\tv6.xzw = vec3(1.000000e+00,1.000000e+00,1.000000e+00);\n\tv6.y = DEVICE_COORDINATE_Y_FLIP;\n\tgl_Position.xyzw = (v6*((((LOCALWORLD_TRANSFORM[3].wwww*CAMERA_VIEWPROJ[3])+((LOCALWORLD_TRANSFORM[3].zzzz*CAMERA_VIEWPROJ[2])+((LOCALWORLD_TRANSFORM[3].yyyy*CAMERA_VIEWPROJ[1])+v5)))*in_POSITION.wwww)+((v2*in_POSITION.zzzz)+((v1*in_POSITION.yyyy)+(v0*in_POSITION.xxxx)))));\n}\n\n",
+      "vsUniforms": [ 0, 1, 2, 3 ]
+    } ],
+    "SCISSOR_MODE": [],
+    "STENCIL_MODE": [ "STENCIL_OFF" ],
+    "UNIFORMS": [ {
+      "varName": "DEVICE_COORDINATE_Y_FLIP",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float"
+    }, {
+      "varName": "CAMERA_VIEWPROJ",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float4x4"
+    }, {
+      "varName": "LOCALWORLD_TRANSFORM",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float4x4"
+    }, {
+      "varName": "POINT_COLOR",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float4"
+    } ]
+  },
+  "PassNames": [ "ForwardBase" ],
+  "Properties": {
+    "POINT_COLOR": [ "Color ", "VEC4", [ 1.0, 1.0, 1.0, 1.0 ] ]
+  },
+  "RenderQueue": "Opaque",
+  "ShaderName": "unlight_coror",
+  "Version": 1
+}

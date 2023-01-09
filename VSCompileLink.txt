@@ -1,0 +1,151 @@
+
+################################################################################
+# Compile and link options
+################################################################################
+if(MSVC)
+    if("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "Any CPU")
+        target_compile_options(${PROJECT_NAME} PRIVATE
+            $<$<CONFIG:Debug>:
+                /Od;
+                /sdl;
+                ${DEFAULT_CXX_DEBUG_INFORMATION_FORMAT}
+            >
+            $<$<CONFIG:Editor_Debug>:
+                /Od;
+                /ZI
+            >
+            $<$<CONFIG:Editor_Release>:
+                /O2;
+                /Oi;
+                /sdl;
+                /Gy;
+                ${DEFAULT_CXX_DEBUG_INFORMATION_FORMAT}
+            >
+            $<$<CONFIG:Release>:
+                /O2;
+                /Oi;
+                /sdl;
+                /Gy;
+                ${DEFAULT_CXX_DEBUG_INFORMATION_FORMAT}
+            >
+            /permissive-;
+            /W3;
+            /bigobj;
+            ${DEFAULT_CXX_EXCEPTION_HANDLING}
+        )
+    elseif("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "Win32")
+        target_compile_options(${PROJECT_NAME} PRIVATE
+            $<$<CONFIG:Debug>:
+                /Od;
+                /sdl;
+                ${DEFAULT_CXX_DEBUG_INFORMATION_FORMAT}
+            >
+            $<$<CONFIG:Editor_Debug>:
+                /Od;
+                /ZI
+            >
+            $<$<CONFIG:Editor_Release>:
+                /O2;
+                /Oi;
+                /sdl;
+                /Gy;
+                ${DEFAULT_CXX_DEBUG_INFORMATION_FORMAT}
+            >
+            $<$<CONFIG:Release>:
+                /O2;
+                /Oi;
+                /sdl;
+                /Gy;
+                ${DEFAULT_CXX_DEBUG_INFORMATION_FORMAT}
+            >
+            # /permissive-; #符合模式
+            /W3;
+            /bigobj;
+            ${DEFAULT_CXX_EXCEPTION_HANDLING}
+        )
+    elseif("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64")
+        target_compile_options(${PROJECT_NAME} PRIVATE
+            $<$<CONFIG:Debug>:
+                /Od
+            >
+            $<$<CONFIG:Editor_Debug>:
+                /Od
+            >
+            $<$<CONFIG:Editor_Release>:
+                /O2;
+                /Oi;
+                /Gy
+            >
+            $<$<CONFIG:Release>:
+                /O2;
+                /Oi;
+                /Gy
+            >
+            # /permissive-; #符合模式
+            /sdl;
+            /W3;
+            /bigobj;
+            ${DEFAULT_CXX_DEBUG_INFORMATION_FORMAT};
+            ${DEFAULT_CXX_EXCEPTION_HANDLING}
+        )
+    endif()
+    if("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "Any CPU")
+        target_link_options(${PROJECT_NAME} PRIVATE
+            $<$<CONFIG:Debug>:
+                /NODEFAULTLIB:MSVCR100D.lib;
+                /DEBUG:FULL
+            >
+            $<$<CONFIG:Editor_Debug>:
+                /NODEFAULTLIB:MSVCR100D.lib;
+                /DEBUG;
+                /SUBSYSTEM:WINDOWS
+            >
+            $<$<CONFIG:Editor_Release>:
+                /DEBUG:FULL;
+                /SUBSYSTEM:WINDOWS;
+                /OPT:REF;
+                /OPT:ICF
+            >
+            $<$<CONFIG:Release>:
+                /DEBUG:FULL;
+                /OPT:REF;
+                /OPT:ICF
+            >
+        )
+    elseif("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "Win32")
+        target_link_options(${PROJECT_NAME} PRIVATE
+            $<$<CONFIG:Debug>:
+                /NODEFAULTLIB:MSVCR100D.lib;
+                /DEBUG:FULL
+            >
+            $<$<CONFIG:Editor_Debug>:
+                /NODEFAULTLIB:MSVCR100D.lib;
+                /DEBUG;
+                /SUBSYSTEM:WINDOWS
+            >
+            $<$<CONFIG:Editor_Release>:
+                /DEBUG:FULL;
+                /SUBSYSTEM:WINDOWS;
+                /OPT:REF;
+                /OPT:ICF
+            >
+            $<$<CONFIG:Release>:
+                /DEBUG:FULL;
+                /OPT:REF;
+                /OPT:ICF
+            >
+        )
+    elseif("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64")
+        target_link_options(${PROJECT_NAME} PRIVATE
+            $<$<CONFIG:Editor_Release>:
+                /OPT:REF;
+                /OPT:ICF
+            >
+            $<$<CONFIG:Release>:
+                /OPT:REF;
+                /OPT:ICF
+            >
+            /DEBUG:FULL
+        )
+    endif()
+endif()

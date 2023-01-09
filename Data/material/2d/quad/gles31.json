@@ -1,0 +1,39 @@
+{
+  "Always": {
+    "ALPHA_MODE": [ "ALPHA_OFF" ],
+    "ATTRIBUTES": [],
+    "COLOR_MASK": [ "COLOR_RGBA" ],
+    "DRAW_MODE": [ "CULL_FACE_BACK", "DEPTH_MASK_ON", "DEPTH_TEST_ON", "DEPTH_FUNCTION_LESS" ],
+    "LIGHT_MODE": [ "ALWAYS" ],
+    "POLYGON_MODE": [],
+    "Programs": [ {
+      "keyWords": [],
+      "psBufferSize": 0,
+      "psShader": "#version 310 es\n// end extensions\nprecision mediump float;\nprecision mediump int;\n\nvoid compiler_internal_AdjustInputSemantic(inout vec4 TempVariable)\n{\n}\n\nvoid compiler_internal_AdjustOutputSemantic(inout vec4 Src)\n{\n}\n\nbool compiler_internal_AdjustIsFrontFacing(bool isFrontFacing)\n{\n\treturn false;\n}\nuniform highp sampler2D _MainTex;\nINTERFACE_LOCATION(0) in highp vec2 in_TEXCOORD0;\nINTERFACE_LOCATION(0) out highp vec4 out_Target0;\nvoid main()\n{\n\tout_Target0.xyzw = texture(_MainTex,in_TEXCOORD0);\n}\n\n",
+      "psUniforms": [],
+      "shaderApi": "gles31",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": "#version 310 es\n// end extensions\n\nvoid compiler_internal_AdjustInputSemantic(inout vec4 TempVariable)\n{\n}\n\nvoid compiler_internal_AdjustOutputSemantic(inout vec4 Src)\n{\n}\n\nbool compiler_internal_AdjustIsFrontFacing(bool isFrontFacing)\n{\n\treturn false;\n}\nin highp vec2 in_POSITION;\nin highp vec2 in_TEXCOORD0;\nINTERFACE_LOCATION(0) out highp vec2 var_TEXCOORD0;\nvoid main()\n{\n\thighp vec4 v0;\n\thighp vec4 v1;\n\tv1.zw = vec2(0.000000e+00,1.000000e+00);\n\tv1.xy = in_POSITION;\n\tv0.xyzw = v1;\n\tv0.w = 1.000000e+00;\n\tvar_TEXCOORD0.xy = in_TEXCOORD0;\n\tgl_Position.xyzw = v0;\n}\n\n",
+      "vsUniforms": [ 0 ]
+    } ],
+    "SCISSOR_MODE": [],
+    "STENCIL_MODE": [ "STENCIL_OFF" ],
+    "UNIFORMS": [ {
+      "varName": "_MainTex",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "sampler2D"
+    } ]
+  },
+  "Attributes": [],
+  "PassNames": [ "Always" ],
+  "Properties": {
+    "_MainTex": [ "Main Color", "TEXTURE2D", [ "white" ] ]
+  },
+  "RenderQueue": "Transparent",
+  "ShaderName": "FullScreenQuad",
+  "Version": 1
+}

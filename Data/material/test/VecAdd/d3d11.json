@@ -1,0 +1,39 @@
+{
+  "Programs": [ {
+    "csBufferSize": 0,
+    "csShader": [ 0, 0, 29576 ],
+    "csUniforms": [ 0, 1, 2 ],
+    "keyWords": [],
+    "psBufferSize": "0",
+    "psShader": "COMP,0,0,0",
+    "psUniforms": [],
+    "shaderApi": "d3d11",
+    "vsAttributes": [],
+    "vsBufferSize": "0",
+    "vsShader": "COMP,0,0,0",
+    "vsUniforms": []
+  } ],
+  "UNIFORMS": [ {
+    "varName": "gInputA",
+    "varNum": "1",
+    "varRegCount": "1",
+    "varRegIndex": "0",
+    "varSit": "0",
+    "varType": "buffer"
+  }, {
+    "varName": "gInputB",
+    "varNum": "1",
+    "varRegCount": "1",
+    "varRegIndex": "1",
+    "varSit": "0",
+    "varType": "buffer"
+  }, {
+    "varName": "gOutput",
+    "varNum": "1",
+    "varRegCount": "1",
+    "varRegIndex": "0",
+    "varSit": "1",
+    "varType": "buffer"
+  } ],
+  "Version": 2
+}

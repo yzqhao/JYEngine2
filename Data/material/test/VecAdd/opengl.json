@@ -1,0 +1,37 @@
+{
+  "Programs": [ {
+    "csBufferSize": 0,
+    "csShader": "#version 430 \n// end extensions\nlayout( local_size_x = 32, local_size_y = 1, local_size_z = 1 ) in;\nstruct Data\n{\n\tvec3 v1;\n\tvec2 v2;\n};\n\n\nvoid compiler_internal_AdjustInputSemantic(inout vec4 TempVariable)\n{\n}\n\nvoid compiler_internal_AdjustOutputSemantic(inout vec4 Src)\n{\n}\n\nbool compiler_internal_AdjustIsFrontFacing(bool isFrontFacing)\n{\n\treturn false;\n}\nlayout(std430,binding=2) buffer  gOutput_VAR { Data gOutput[]; };\nlayout(std430,binding=1) buffer  gInputB_VAR { Data gInputB[]; };\nlayout(std430,binding=0) buffer  gInputA_VAR { Data gInputA[]; };\nvoid main()\n{\n\tivec3 v0;\n\tv0.xyz = ivec3(gl_GlobalInvocationID);\n\tgOutput[v0.x].v1.xyz = (gInputA[v0.x].v1+gInputB[v0.x].v1);\n\tgOutput[v0.x].v2.xy = (gInputA[v0.x].v2+gInputB[v0.x].v2);\n}\n\n",
+    "csUniforms": [ 0, 1, 2 ],
+    "keyWords": [],
+    "psBufferSize": "0",
+    "psUniforms": [],
+    "shaderApi": "opengl",
+    "vsAttributes": [],
+    "vsBufferSize": "0",
+    "vsUniforms": []
+  } ],
+  "UNIFORMS": [ {
+    "varName": "gOutput",
+    "varNum": "1",
+    "varRegCount": "1",
+    "varRegIndex": "2",
+    "varSit": "2",
+    "varType": "buffer"
+  }, {
+    "varName": "gInputB",
+    "varNum": "1",
+    "varRegCount": "1",
+    "varRegIndex": "1",
+    "varSit": "2",
+    "varType": "buffer"
+  }, {
+    "varName": "gInputA",
+    "varNum": "1",
+    "varRegCount": "1",
+    "varRegIndex": "0",
+    "varSit": "2",
+    "varType": "buffer"
+  } ],
+  "Version": 2
+}

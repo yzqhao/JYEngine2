@@ -1,0 +1,66 @@
+{
+  "Always": {
+    "ALPHA_MODE": [ "ALPHA_OFF" ],
+    "ATTRIBUTES": [ {
+      "attID": "1",
+      "attName": "POSITION"
+    }, {
+      "attID": "16",
+      "attName": "TEXCOORD"
+    } ],
+    "COLOR_MASK": [ "COLOR_RGBA" ],
+    "DRAW_MODE": [ "CULL_FACE_OFF", "DEPTH_MASK_ON", "DEPTH_TEST_ON", "DEPTH_FUNCTION_LESS" ],
+    "LIGHT_MODE": [ "ALWAYS" ],
+    "POLYGON_MODE": [],
+    "Programs": [ {
+      "keyWords": [],
+      "psBufferSize": 0,
+      "psShader": [ 0, 68040, 61048 ],
+      "psUniforms": [ 3 ],
+      "shaderApi": "d3d11",
+      "vsAttributes": [ 0, 1 ],
+      "vsBufferSize": 736,
+      "vsShader": [ 0, 0, 68040 ],
+      "vsUniforms": [ 0, 1, 2 ]
+    } ],
+    "SCISSOR_MODE": [],
+    "STENCIL_MODE": [ "STENCIL_OFF" ],
+    "UNIFORMS": [ {
+      "varName": "LOCALWORLD_TRANSFORM",
+      "varNum": "1",
+      "varRegCount": "4",
+      "varRegIndex": "0",
+      "varSit": "",
+      "varType": "float4x4"
+    }, {
+      "varName": "CAMERA_VIEWPROJ",
+      "varNum": "1",
+      "varRegCount": "4",
+      "varRegIndex": "192",
+      "varSit": "",
+      "varType": "float4x4"
+    }, {
+      "varName": "DEVICE_COORDINATE_Y_FLIP",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "720",
+      "varSit": "",
+      "varType": "float"
+    }, {
+      "varName": "_MainTex",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "sampler2D"
+    } ]
+  },
+  "Attributes": [],
+  "PassNames": [ "Always" ],
+  "Properties": {
+    "_MainTex": [ "Main Color", "TEXTURE2D", [ "white" ] ]
+  },
+  "RenderQueue": "Opaque",
+  "ShaderName": "simple",
+  "Version": 1
+}

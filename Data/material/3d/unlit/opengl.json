@@ -1,0 +1,60 @@
+{
+  "Always": {
+    "ALPHA_MODE": [ "ALPHA_OFF" ],
+    "ATTRIBUTES": [],
+    "COLOR_MASK": [ "COLOR_RGBA" ],
+    "DRAW_MODE": [ "CULL_FACE_OFF", "DEPTH_MASK_ON", "DEPTH_TEST_ON", "DEPTH_FUNCTION_LEQUAL" ],
+    "LIGHT_MODE": [ "ALWAYS" ],
+    "POLYGON_MODE": [],
+    "Programs": [ {
+      "keyWords": [],
+      "psBufferSize": 0,
+      "psShader": "#version 430 \n// end extensions\n\nvoid compiler_internal_AdjustInputSemantic(inout vec4 TempVariable)\n{\n}\n\nvoid compiler_internal_AdjustOutputSemantic(inout vec4 Src)\n{\n}\n\nbool compiler_internal_AdjustIsFrontFacing(bool isFrontFacing)\n{\n\treturn false;\n}\nuniform sampler2D _MainTex;\nINTERFACE_BLOCK(0, , in , TEXCOORD0, vec2, Data) in_TEXCOORD0;\nINTERFACE_LOCATION(0) out vec4 out_Target0;\nvoid main()\n{\n\tout_Target0.xyzw = texture(_MainTex,in_TEXCOORD0.Data);\n}\n\n",
+      "psUniforms": [],
+      "shaderApi": "opengl",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": "#version 430 \n// end extensions\n\nvoid compiler_internal_AdjustInputSemantic(inout vec4 TempVariable)\n{\n}\n\nvoid compiler_internal_AdjustOutputSemantic(inout vec4 Src)\n{\n}\n\nbool compiler_internal_AdjustIsFrontFacing(bool isFrontFacing)\n{\n\treturn false;\n}\nuniform float DEVICE_COORDINATE_Y_FLIP;\nuniform mat4 CAMERA_VIEWPROJ;\nuniform mat4 LOCALWORLD_TRANSFORM;\nin vec4 in_POSITION;\nin vec2 in_TEXCOORD0;\nINTERFACE_BLOCK(0, , out , TEXCOORD0, vec2, Data) out_TEXCOORD0;\nvoid main()\n{\n\tvec4 v0;\n\tvec4 v1;\n\tvec4 v2;\n\tvec4 v3;\n\tv3.xyzw = ((LOCALWORLD_TRANSFORM[0].wwww*CAMERA_VIEWPROJ[3])+((LOCALWORLD_TRANSFORM[0].zzzz*CAMERA_VIEWPROJ[2])+((LOCALWORLD_TRANSFORM[0].yyyy*CAMERA_VIEWPROJ[1])+(LOCALWORLD_TRANSFORM[0].xxxx*CAMERA_VIEWPROJ[0]))));\n\tv0.xyzw = v3;\n\tv3.xyzw = (LOCALWORLD_TRANSFORM[1].xxxx*CAMERA_VIEWPROJ[0]);\n\tvec4 v4;\n\tv4.xyzw = ((LOCALWORLD_TRANSFORM[1].wwww*CAMERA_VIEWPROJ[3])+((LOCALWORLD_TRANSFORM[1].zzzz*CAMERA_VIEWPROJ[2])+((LOCALWORLD_TRANSFORM[1].yyyy*CAMERA_VIEWPROJ[1])+v3)));\n\tv1.xyzw = v4;\n\tv4.xyzw = (LOCALWORLD_TRANSFORM[2].xxxx*CAMERA_VIEWPROJ[0]);\n\tvec4 v5;\n\tv5.xyzw = ((LOCALWORLD_TRANSFORM[2].wwww*CAMERA_VIEWPROJ[3])+((LOCALWORLD_TRANSFORM[2].zzzz*CAMERA_VIEWPROJ[2])+((LOCALWORLD_TRANSFORM[2].yyyy*CAMERA_VIEWPROJ[1])+v4)));\n\tv2.xyzw = v5;\n\tv5.xyzw = (LOCALWORLD_TRANSFORM[3].xxxx*CAMERA_VIEWPROJ[0]);\n\tvec4 v6;\n\tv6.xzw = vec3(1.000000e+00,1.000000e+00,1.000000e+00);\n\tv6.y = DEVICE_COORDINATE_Y_FLIP;\n\tout_TEXCOORD0.Data.xy = in_TEXCOORD0;\n\tgl_Position.xyzw = (v6*((((LOCALWORLD_TRANSFORM[3].wwww*CAMERA_VIEWPROJ[3])+((LOCALWORLD_TRANSFORM[3].zzzz*CAMERA_VIEWPROJ[2])+((LOCALWORLD_TRANSFORM[3].yyyy*CAMERA_VIEWPROJ[1])+v5)))*in_POSITION.wwww)+((v2*in_POSITION.zzzz)+((v1*in_POSITION.yyyy)+(v0*in_POSITION.xxxx)))));\n}\n\n",
+      "vsUniforms": [ 0, 1, 2, 3 ]
+    } ],
+    "SCISSOR_MODE": [],
+    "STENCIL_MODE": [ "STENCIL_OFF" ],
+    "UNIFORMS": [ {
+      "varName": "DEVICE_COORDINATE_Y_FLIP",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float"
+    }, {
+      "varName": "CAMERA_VIEWPROJ",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float4x4"
+    }, {
+      "varName": "LOCALWORLD_TRANSFORM",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float4x4"
+    }, {
+      "varName": "_MainTex",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "sampler2D"
+    } ]
+  },
+  "Attributes": [],
+  "PassNames": [ "Always" ],
+  "Properties": {
+    "_MainTex": [ "Main Color", "TEXTURE2D", [ "white" ] ]
+  },
+  "RenderQueue": "Opaque",
+  "ShaderName": "unlit",
+  "Version": 1
+}

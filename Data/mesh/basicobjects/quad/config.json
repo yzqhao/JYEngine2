@@ -1,0 +1,60 @@
+{
+	"version": 4,
+	"meshes": [
+		{
+			"name": "./data/plane001.mesh",
+			"vertexattribute": [
+				"position",
+				"normal",
+				"tangent",
+				"binormal",
+				"texcoord0"
+			],
+			"boundingbox": {
+				"min": [
+					-1.0,
+					-1.0,
+					0.0
+				],
+				"max": [
+					1.0,
+					1.0,
+					0.0
+				]
+			},
+			"material": {
+				"name": "lambert1",
+				"alphamode": 0,
+				"shadingmodel": "lambert",
+				"istruepbr": false,
+				"pbrmetallicroughness": {
+					"basecolorfactor": [
+						0.4000000059604645,
+						0.4000000059604645,
+						0.0
+					],
+					"roughnessfactor": 0.800000011920929,
+					"metallicfactor": 0.20000000298023225
+				}
+			},
+			"transform": {
+				"pos": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"scale": [
+					0.009999999776482582,
+					0.009999999776482582,
+					0.009999999776482582
+				],
+				"rotation": [
+					0.0,
+					0.0,
+					0.0,
+					1.0
+				]
+			}
+		}
+	]
+}

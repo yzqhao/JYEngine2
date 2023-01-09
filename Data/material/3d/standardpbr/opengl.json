@@ -1,0 +1,388 @@
+{
+  "Attributes": {
+    "_ALPHATEST_ON": "Keywords(ALPHATEST_ON,ALPHATEST_OFF)",
+    "_AlphaPreMultiply": "Keywords(ALPHAPREMULTIPLY_ON,ALPHAPREMULTIPLY_OFF)"
+  },
+  "Depth": {
+    "ALPHA_MODE": [ "ALPHA_OFF" ],
+    "ATTRIBUTES": [],
+    "COLOR_MASK": [ "COLOR_RGBA" ],
+    "DRAW_MODE": [ "CULL_FACE_OFF", "DEPTH_MASK_ON", "DEPTH_TEST_ON", "DEPTH_FUNCTION_LESS" ],
+    "LIGHT_MODE": [ "DEPTHPASS" ],
+    "POLYGON_MODE": [],
+    "Programs": [ {
+      "keyWords": [ "GPUSKIN4" ],
+      "psBufferSize": 0,
+      "psShader": [ 0, 2331, 393 ],
+      "psUniforms": [],
+      "shaderApi": "opengl",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": [ 0, 0, 2331 ],
+      "vsUniforms": [ 0, 1, 2, 3, 4 ]
+    }, {
+      "keyWords": [],
+      "psBufferSize": 0,
+      "psShader": [ 1, 1736, 393 ],
+      "psUniforms": [],
+      "shaderApi": "opengl",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": [ 1, 0, 1736 ],
+      "vsUniforms": [ 1, 2, 3, 4 ]
+    } ],
+    "SCISSOR_MODE": [],
+    "STENCIL_MODE": [ "STENCIL_OFF" ],
+    "UNIFORMS": [ {
+      "varName": "ANIMATION_MATRIX_ARRAY",
+      "varNum": "210",
+      "varRegCount": "210",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float4"
+    }, {
+      "varName": "DEVICE_COORDINATE_Y_FLIP",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float"
+    }, {
+      "varName": "LIGHT_PARAM",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float4"
+    }, {
+      "varName": "CAMERA_VIEWPROJ",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float4x4"
+    }, {
+      "varName": "LOCALWORLD_TRANSFORM",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float4x4"
+    } ]
+  },
+  "ForwardBase": {
+    "ALPHA_MODE": [ "ALPHA_OFF" ],
+    "ATTRIBUTES": [],
+    "COLOR_MASK": [ "COLOR_RGBA" ],
+    "DRAW_MODE": [ "CULL_FACE_OFF", "DEPTH_MASK_ON", "DEPTH_TEST_ON", "DEPTH_FUNCTION_LEQUAL" ],
+    "LIGHT_MODE": [],
+    "POLYGON_MODE": [],
+    "Programs": [ {
+      "keyWords": [ "GPUSKIN4", "NoLight", "ALPHAPREMULTIPLY_ON", "ALPHATEST_ON" ],
+      "psBufferSize": 0,
+      "psShader": [ 2, 4162, 780 ],
+      "psUniforms": [],
+      "shaderApi": "opengl",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": [ 2, 0, 4162 ],
+      "vsUniforms": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+    }, {
+      "keyWords": [ "GPUSKIN4", "DirLight", "ShadowOff", "ALPHAPREMULTIPLY_ON", "ALPHATEST_ON" ],
+      "psBufferSize": 0,
+      "psShader": [ 3, 4162, 3441 ],
+      "psUniforms": [],
+      "shaderApi": "opengl",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": [ 3, 0, 4162 ],
+      "vsUniforms": [ 0, 1, 2, 3, 4, 5, 9, 10, 6, 11, 12, 13, 7, 14, 15, 16 ]
+    }, {
+      "keyWords": [ "NoLight", "ALPHAPREMULTIPLY_ON", "ALPHATEST_ON" ],
+      "psBufferSize": 0,
+      "psShader": [ 4, 3224, 780 ],
+      "psUniforms": [],
+      "shaderApi": "opengl",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": [ 4, 0, 3224 ],
+      "vsUniforms": [ 1, 2, 3, 4, 5, 6, 7, 8 ]
+    }, {
+      "keyWords": [ "DirLight", "ShadowOff", "ALPHAPREMULTIPLY_ON", "ALPHATEST_ON" ],
+      "psBufferSize": 0,
+      "psShader": [ 5, 3224, 3441 ],
+      "psUniforms": [],
+      "shaderApi": "opengl",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": [ 5, 0, 3224 ],
+      "vsUniforms": [ 1, 2, 3, 4, 5, 9, 10, 6, 11, 12, 13, 7, 14, 15, 16 ]
+    }, {
+      "keyWords": [ "GPUSKIN4", "NoLight", "ALPHAPREMULTIPLY_OFF", "ALPHATEST_ON" ],
+      "psBufferSize": 0,
+      "psShader": [ 6, 4162, 780 ],
+      "psUniforms": [],
+      "shaderApi": "opengl",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": [ 6, 0, 4162 ],
+      "vsUniforms": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+    }, {
+      "keyWords": [ "GPUSKIN4", "DirLight", "ShadowOff", "ALPHAPREMULTIPLY_OFF", "ALPHATEST_ON" ],
+      "psBufferSize": 0,
+      "psShader": [ 7, 4162, 3471 ],
+      "psUniforms": [],
+      "shaderApi": "opengl",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": [ 7, 0, 4162 ],
+      "vsUniforms": [ 0, 1, 2, 3, 4, 5, 9, 10, 6, 11, 12, 13, 7, 14, 15, 16 ]
+    }, {
+      "keyWords": [ "NoLight", "ALPHAPREMULTIPLY_OFF", "ALPHATEST_ON" ],
+      "psBufferSize": 0,
+      "psShader": [ 8, 3224, 780 ],
+      "psUniforms": [],
+      "shaderApi": "opengl",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": [ 8, 0, 3224 ],
+      "vsUniforms": [ 1, 2, 3, 4, 5, 6, 7, 8 ]
+    }, {
+      "keyWords": [ "DirLight", "ShadowOff", "ALPHAPREMULTIPLY_OFF", "ALPHATEST_ON" ],
+      "psBufferSize": 0,
+      "psShader": [ 9, 3224, 3471 ],
+      "psUniforms": [],
+      "shaderApi": "opengl",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": [ 9, 0, 3224 ],
+      "vsUniforms": [ 1, 2, 3, 4, 5, 9, 10, 6, 11, 12, 13, 7, 14, 15, 16 ]
+    }, {
+      "keyWords": [ "GPUSKIN4", "NoLight", "ALPHAPREMULTIPLY_ON", "ALPHATEST_OFF" ],
+      "psBufferSize": 0,
+      "psShader": [ 10, 4162, 702 ],
+      "psUniforms": [],
+      "shaderApi": "opengl",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": [ 10, 0, 4162 ],
+      "vsUniforms": [ 0, 1, 2, 3, 17, 5, 6, 7, 8 ]
+    }, {
+      "keyWords": [ "GPUSKIN4", "DirLight", "ShadowOff", "ALPHAPREMULTIPLY_ON", "ALPHATEST_OFF" ],
+      "psBufferSize": 0,
+      "psShader": [ 11, 4162, 3388 ],
+      "psUniforms": [],
+      "shaderApi": "opengl",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": [ 11, 0, 4162 ],
+      "vsUniforms": [ 0, 1, 2, 3, 17, 5, 9, 10, 6, 11, 12, 13, 7, 14, 15, 16 ]
+    }, {
+      "keyWords": [ "NoLight", "ALPHAPREMULTIPLY_ON", "ALPHATEST_OFF" ],
+      "psBufferSize": 0,
+      "psShader": [ 12, 3224, 702 ],
+      "psUniforms": [],
+      "shaderApi": "opengl",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": [ 12, 0, 3224 ],
+      "vsUniforms": [ 1, 2, 3, 17, 5, 6, 7, 8 ]
+    }, {
+      "keyWords": [ "DirLight", "ShadowOff", "ALPHAPREMULTIPLY_ON", "ALPHATEST_OFF" ],
+      "psBufferSize": 0,
+      "psShader": [ 13, 3224, 3388 ],
+      "psUniforms": [],
+      "shaderApi": "opengl",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": [ 13, 0, 3224 ],
+      "vsUniforms": [ 1, 2, 3, 17, 5, 9, 10, 6, 11, 12, 13, 7, 14, 15, 16 ]
+    }, {
+      "keyWords": [ "GPUSKIN4", "NoLight", "ALPHAPREMULTIPLY_OFF", "ALPHATEST_OFF" ],
+      "psBufferSize": 0,
+      "psShader": [ 14, 4162, 614 ],
+      "psUniforms": [],
+      "shaderApi": "opengl",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": [ 14, 0, 4162 ],
+      "vsUniforms": [ 0, 1, 2, 3, 5, 6, 7 ]
+    }, {
+      "keyWords": [ "GPUSKIN4", "DirLight", "ShadowOff", "ALPHAPREMULTIPLY_OFF", "ALPHATEST_OFF" ],
+      "psBufferSize": 0,
+      "psShader": [ 15, 4162, 3362 ],
+      "psUniforms": [],
+      "shaderApi": "opengl",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": [ 15, 0, 4162 ],
+      "vsUniforms": [ 0, 1, 2, 3, 5, 9, 10, 6, 11, 12, 13, 7, 14, 15, 16 ]
+    }, {
+      "keyWords": [ "NoLight", "ALPHAPREMULTIPLY_OFF", "ALPHATEST_OFF" ],
+      "psBufferSize": 0,
+      "psShader": [ 16, 3224, 614 ],
+      "psUniforms": [],
+      "shaderApi": "opengl",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": [ 16, 0, 3224 ],
+      "vsUniforms": [ 1, 2, 3, 5, 6, 7 ]
+    }, {
+      "keyWords": [ "DirLight", "ShadowOff", "ALPHAPREMULTIPLY_OFF", "ALPHATEST_OFF" ],
+      "psBufferSize": 0,
+      "psShader": [ 17, 3224, 3362 ],
+      "psUniforms": [],
+      "shaderApi": "opengl",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": [ 17, 0, 3224 ],
+      "vsUniforms": [ 1, 2, 3, 5, 9, 10, 6, 11, 12, 13, 7, 14, 15, 16 ]
+    } ],
+    "SCISSOR_MODE": [],
+    "STENCIL_MODE": [ "STENCIL_OFF" ],
+    "UNIFORMS": [ {
+      "varName": "ANIMATION_MATRIX_ARRAY",
+      "varNum": "210",
+      "varRegCount": "210",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float4"
+    }, {
+      "varName": "DEVICE_COORDINATE_Y_FLIP",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float"
+    }, {
+      "varName": "CAMERA_VIEWPROJ",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float4x4"
+    }, {
+      "varName": "LOCALWORLD_TRANSFORM",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float4x4"
+    }, {
+      "varName": "_CutOff",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float"
+    }, {
+      "varName": "_EmissionColor",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float4"
+    }, {
+      "varName": "AMBIENT_COLOR",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float3"
+    }, {
+      "varName": "_EmissionMap",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "sampler2D"
+    }, {
+      "varName": "_MainTex",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "1",
+      "varSit": "0",
+      "varType": "sampler2D"
+    }, {
+      "varName": "_Metallic",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float"
+    }, {
+      "varName": "_Smoothness",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float"
+    }, {
+      "varName": "LIGHT_COLOR",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float3"
+    }, {
+      "varName": "LIGHT_GIVEN_DIRECTION",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float3"
+    }, {
+      "varName": "CAMERA_WORLDPOSITION",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float3"
+    }, {
+      "varName": "_MetallicGlossMap",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "1",
+      "varSit": "0",
+      "varType": "sampler2D"
+    }, {
+      "varName": "_BumpMap",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "2",
+      "varSit": "0",
+      "varType": "sampler2D"
+    }, {
+      "varName": "_MainTex",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "3",
+      "varSit": "0",
+      "varType": "sampler2D"
+    }, {
+      "varName": "_Opacity",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float"
+    } ]
+  },
+  "PassNames": [ "ForwardBase", "Depth" ],
+  "Properties": {
+    "_ALPHATEST_ON": [ "Alpha Test On", "FLOAT", [ 1.0 ] ],
+    "_AlphaPreMultiply": [ "Alpha Pre Multiply", "FLOAT", [ 1.0 ] ],
+    "_BumpMap": [ "Normal Map", "TEXTURE2D", [ "bump" ] ],
+    "_CutOff": [ "CutOff", "FLOAT", [ 0.0 ] ],
+    "_EmissionColor": [ "Emission Color", "COLOR", [ 0.0, 0.0, 0.0, 1.0 ] ],
+    "_EmissionMap": [ "Emission Map", "TEXTURE2D", [ "white" ] ],
+    "_MainTex": [ "Main Color", "TEXTURE2D", [ "white" ] ],
+    "_Metallic": [ "Metallic", "FLOAT", [ 0.5 ] ],
+    "_MetallicGlossMap": [ "Metallic Gloss", "TEXTURE2D", [ "white" ] ],
+    "_Opacity": [ "Opacity", "FLOAT", [ 1.0 ] ],
+    "_Smoothness": [ "Smoothness", "FLOAT", [ 0.5 ] ]
+  },
+  "RenderQueue": "Opaque",
+  "ShaderName": "standardpbr",
+  "Version": 1
+}

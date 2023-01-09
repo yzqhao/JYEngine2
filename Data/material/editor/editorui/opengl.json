@@ -1,0 +1,57 @@
+{
+  "Always": {
+    "ALPHA_MODE": [ "ALPHA_BLEND", "SRC_ALPHA", "ONE_MINUS_SRC_ALPHA", "ONE", "ONE" ],
+    "ATTRIBUTES": [],
+    "COLOR_MASK": [ "COLOR_RGBA" ],
+    "DRAW_MODE": [ "CULL_FACE_OFF", "DEPTH_MASK_OFF", "DEPTH_TEST_OFF", "DEPTH_FUNCTION_LESS" ],
+    "LIGHT_MODE": [],
+    "POLYGON_MODE": [],
+    "Programs": [ {
+      "keyWords": [],
+      "psBufferSize": 0,
+      "psShader": "#version 430 \n// end extensions\n\nvoid compiler_internal_AdjustInputSemantic(inout vec4 TempVariable)\n{\n}\n\nvoid compiler_internal_AdjustOutputSemantic(inout vec4 Src)\n{\n}\n\nbool compiler_internal_AdjustIsFrontFacing(bool isFrontFacing)\n{\n\treturn false;\n}\nuniform sampler2D TEXTURE_DIFFUSE;\nINTERFACE_BLOCK(0, , in , TEXCOORD0, vec2, Data) in_TEXCOORD0;\nINTERFACE_BLOCK(1, , in , COLOR0, vec4, Data) in_COLOR0;\nINTERFACE_LOCATION(0) out vec4 out_Target0;\nvoid main()\n{\n\tout_Target0.xyzw = (in_COLOR0.Data*texture(TEXTURE_DIFFUSE,in_TEXCOORD0.Data));\n}\n\n",
+      "psUniforms": [],
+      "shaderApi": "opengl",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": "#version 430 \n// end extensions\n\nvoid compiler_internal_AdjustInputSemantic(inout vec4 TempVariable)\n{\n}\n\nvoid compiler_internal_AdjustOutputSemantic(inout vec4 Src)\n{\n}\n\nbool compiler_internal_AdjustIsFrontFacing(bool isFrontFacing)\n{\n\treturn false;\n}\nuniform float DEVICE_COORDINATE_Y_FLIP;\nuniform mat4 CAMERA_PROJECTION;\nin vec2 in_POSITION;\nin vec2 in_TEXCOORD0;\nin vec4 in_COLOR0;\nINTERFACE_BLOCK(0, , out , TEXCOORD0, vec2, Data) out_TEXCOORD0;\nINTERFACE_BLOCK(1, , out , COLOR0, vec4, Data) out_COLOR0;\nvoid main()\n{\n\tvec4 v0;\n\tv0.z = 0.000000e+00;\n\tv0.w = 1.000000e+00;\n\tv0.xy = in_POSITION;\n\tvec4 v1;\n\tv1.x = dot(CAMERA_PROJECTION[0],v0);\n\tv1.y = dot(CAMERA_PROJECTION[1],v0);\n\tv1.z = dot(CAMERA_PROJECTION[2],v0);\n\tv1.w = dot(CAMERA_PROJECTION[3],v0);\n\tvec4 v2;\n\tv2.xzw = vec3(1.000000e+00,1.000000e+00,1.000000e+00);\n\tv2.y = DEVICE_COORDINATE_Y_FLIP;\n\tgl_Position.xyzw = (v2*v1);\n\tout_TEXCOORD0.Data.xy = in_TEXCOORD0;\n\tout_COLOR0.Data.xyzw = in_COLOR0;\n}\n\n",
+      "vsUniforms": [ 0, 1, 2 ]
+    } ],
+    "SCISSOR_MODE": [ "%_SCISSORX", "%_SCISSORY", "%_SCISSORZ", "%_SCISSORW" ],
+    "STENCIL_MODE": [ "STENCIL_OFF" ],
+    "UNIFORMS": [ {
+      "varName": "DEVICE_COORDINATE_Y_FLIP",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float"
+    }, {
+      "varName": "CAMERA_PROJECTION",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float4x4"
+    }, {
+      "varName": "TEXTURE_DIFFUSE",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "sampler2D"
+    } ]
+  },
+  "Attributes": [],
+  "PassNames": [ "Always" ],
+  "Properties": {
+    "TEXTURE_DIFFUSE": [ "main Color", "TEXTURE2D", [ "white" ] ],
+    "_SCISSORW": [ "scissor w", "FLOAT", [ 0.0 ] ],
+    "_SCISSORX": [ "scissor x", "FLOAT", [ 0.0 ] ],
+    "_SCISSORY": [ "scissor y", "FLOAT", [ 0.0 ] ],
+    "_SCISSORZ": [ "scissor z", "FLOAT", [ 0.0 ] ]
+  },
+  "RenderQueue": "Background",
+  "ShaderName": "editorui",
+  "Version": 1
+}

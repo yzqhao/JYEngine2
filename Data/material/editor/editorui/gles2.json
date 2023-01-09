@@ -1,0 +1,57 @@
+{
+  "Always": {
+    "ALPHA_MODE": [ "ALPHA_BLEND", "SRC_ALPHA", "ONE_MINUS_SRC_ALPHA", "ONE", "ONE" ],
+    "ATTRIBUTES": [],
+    "COLOR_MASK": [ "COLOR_RGBA" ],
+    "DRAW_MODE": [ "CULL_FACE_OFF", "DEPTH_MASK_OFF", "DEPTH_TEST_OFF", "DEPTH_FUNCTION_LESS" ],
+    "LIGHT_MODE": [],
+    "POLYGON_MODE": [],
+    "Programs": [ {
+      "keyWords": [],
+      "psBufferSize": 0,
+      "psShader": "#version 100 \n// end extensions\nprecision mediump float;\nprecision mediump int;\n\n#ifndef DONTEMITSAMPLERDEFAULTPRECISION\nprecision mediump sampler2D;\nprecision mediump samplerCube;\n\n#endif\n\n#ifdef TEXCOORDPRECISIONWORKAROUND\nvec4 texture2DTexCoordPrecisionWorkaround(sampler2D p, vec2 tcoord)\n{\n\treturn texture2D(p, tcoord);\n}\n#define texture2D texture2DTexCoordPrecisionWorkaround\n#endif\n\nvoid compiler_internal_AdjustInputSemantic(inout vec4 TempVariable)\n{\n}\n\nvoid compiler_internal_AdjustOutputSemantic(inout vec4 Src)\n{\n}\n\nbool compiler_internal_AdjustIsFrontFacing(bool isFrontFacing)\n{\n\treturn false;\n}\nuniform highp sampler2D TEXTURE_DIFFUSE;\nvarying highp vec2 var_TEXCOORD0;\nvarying highp vec4 var_COLOR0;\nvoid main()\n{\n\tvec4 v0;\n\tv0.xyzw = (var_COLOR0*texture2D(TEXTURE_DIFFUSE,var_TEXCOORD0));\n\tgl_FragColor.xyzw = v0;\n}\n\n",
+      "psUniforms": [],
+      "shaderApi": "gles2",
+      "vsAttributes": [],
+      "vsBufferSize": 0,
+      "vsShader": "#version 100 \n// end extensions\n\nvoid compiler_internal_AdjustInputSemantic(inout vec4 TempVariable)\n{\n}\n\nvoid compiler_internal_AdjustOutputSemantic(inout vec4 Src)\n{\n}\n\nbool compiler_internal_AdjustIsFrontFacing(bool isFrontFacing)\n{\n\treturn false;\n}\nuniform highp float DEVICE_COORDINATE_Y_FLIP;\nuniform highp mat4 CAMERA_PROJECTION;\nattribute highp vec2 in_POSITION;\nattribute highp vec2 in_TEXCOORD0;\nattribute highp vec4 in_COLOR0;\nvarying highp vec2 var_TEXCOORD0;\nvarying highp vec4 var_COLOR0;\nvoid main()\n{\n\thighp vec4 v0;\n\tv0.z = 0.000000e+00;\n\tv0.w = 1.000000e+00;\n\tv0.xy = in_POSITION;\n\thighp vec4 v1;\n\tv1.x = dot(CAMERA_PROJECTION[0],v0);\n\tv1.y = dot(CAMERA_PROJECTION[1],v0);\n\tv1.z = dot(CAMERA_PROJECTION[2],v0);\n\tv1.w = dot(CAMERA_PROJECTION[3],v0);\n\thighp vec4 v2;\n\tv2.xzw = vec3(1.000000e+00,1.000000e+00,1.000000e+00);\n\tv2.y = DEVICE_COORDINATE_Y_FLIP;\n\tgl_Position.xyzw = (v2*v1);\n\tvar_TEXCOORD0.xy = in_TEXCOORD0;\n\tvar_COLOR0.xyzw = in_COLOR0;\n}\n\n",
+      "vsUniforms": [ 0, 1, 2 ]
+    } ],
+    "SCISSOR_MODE": [ "%_SCISSORX", "%_SCISSORY", "%_SCISSORZ", "%_SCISSORW" ],
+    "STENCIL_MODE": [ "STENCIL_OFF" ],
+    "UNIFORMS": [ {
+      "varName": "DEVICE_COORDINATE_Y_FLIP",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float"
+    }, {
+      "varName": "CAMERA_PROJECTION",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "float4x4"
+    }, {
+      "varName": "TEXTURE_DIFFUSE",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "sampler2D"
+    } ]
+  },
+  "Attributes": [],
+  "PassNames": [ "Always" ],
+  "Properties": {
+    "TEXTURE_DIFFUSE": [ "main Color", "TEXTURE2D", [ "white" ] ],
+    "_SCISSORW": [ "scissor w", "FLOAT", [ 0.0 ] ],
+    "_SCISSORX": [ "scissor x", "FLOAT", [ 0.0 ] ],
+    "_SCISSORY": [ "scissor y", "FLOAT", [ 0.0 ] ],
+    "_SCISSORZ": [ "scissor z", "FLOAT", [ 0.0 ] ]
+  },
+  "RenderQueue": "Background",
+  "ShaderName": "editorui",
+  "Version": 1
+}

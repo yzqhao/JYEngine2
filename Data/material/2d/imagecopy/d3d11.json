@@ -1,0 +1,55 @@
+{
+  "Always": {
+    "ALPHA_MODE": [ "ALPHA_OFF" ],
+    "ATTRIBUTES": [ {
+      "attID": "1",
+      "attName": "POSITION"
+    }, {
+      "attID": "16",
+      "attName": "TEXCOORD"
+    } ],
+    "COLOR_MASK": [ "COLOR_RGBA" ],
+    "DRAW_MODE": [ "CULL_FACE_OFF", "DEPTH_MASK_OFF", "DEPTH_TEST_OFF", "DEPTH_FUNCTION_LESS" ],
+    "LIGHT_MODE": [ "ALWAYS" ],
+    "POLYGON_MODE": [],
+    "Programs": [ {
+      "keyWords": [],
+      "psBufferSize": 0,
+      "psShader": [ 0, 65736, 61048 ],
+      "psUniforms": [ 1 ],
+      "shaderApi": "d3d11",
+      "vsAttributes": [ 0, 1 ],
+      "vsBufferSize": 736,
+      "vsShader": [ 0, 0, 65736 ],
+      "vsUniforms": [ 0 ]
+    } ],
+    "SCISSOR_MODE": [ "%_SCISSORX", "%_SCISSORY", "%_SCISSORZ", "%_SCISSORW" ],
+    "STENCIL_MODE": [ "STENCIL_OFF" ],
+    "UNIFORMS": [ {
+      "varName": "DEVICE_COORDINATE_Y_FLIP",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "720",
+      "varSit": "",
+      "varType": "float"
+    }, {
+      "varName": "TEXTURE_DIFFUSE",
+      "varNum": "1",
+      "varRegCount": "1",
+      "varRegIndex": "0",
+      "varSit": "0",
+      "varType": "sampler2D"
+    } ]
+  },
+  "Attributes": [],
+  "PassNames": [ "Always" ],
+  "Properties": {
+    "_SCISSORW": [ "scissor w", "FLOAT", [ 0.0 ] ],
+    "_SCISSORX": [ "scissor x", "FLOAT", [ 0.0 ] ],
+    "_SCISSORY": [ "scissor y", "FLOAT", [ 0.0 ] ],
+    "_SCISSORZ": [ "scissor z", "FLOAT", [ 0.0 ] ]
+  },
+  "RenderQueue": "PostEffect",
+  "ShaderName": "imagecopy",
+  "Version": 1
+}

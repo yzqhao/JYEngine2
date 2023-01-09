@@ -1,0 +1,99 @@
+// Example IDL file for our monster's schema.
+
+namespace vfbs;
+
+union Type
+{
+	TNull,
+	TBool,
+	TShort,
+	TUShort,
+	TInt,
+	TUInt,
+	TFloat,
+	TDouble,
+	TString,
+	TNative,
+	TClass,
+	TInt64,
+	TUInt64,
+	TRefrence,
+}
+
+table Member
+{
+	key:Type;
+	value:Type;
+}
+
+table TNull
+{
+}
+
+table TBool
+{  
+  value:bool;
+}
+
+table TShort
+{  
+  value:short;
+}
+
+table TUShort
+{  
+  value:ushort;
+}
+
+table TInt
+{
+  value:int;
+}
+
+table TUInt
+{
+  value:uint;
+}
+
+table TFloat
+{
+  value:float;
+}
+
+table TDouble
+{
+  value:double;
+}
+
+table TInt64
+{
+  value:long;
+}
+
+table TUInt64
+{
+  value:ulong;
+}
+
+table TString
+{
+  value:string;
+}
+
+table TRefrence
+{
+  value:string;
+}
+
+table TNative
+{
+  factor:int;
+  value:[ubyte];
+}
+
+table TClass
+{
+	members:[Member];
+}
+
+root_type TClass;
