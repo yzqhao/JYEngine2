@@ -18,7 +18,6 @@
   4. 跨平台shader语言。 采用unreal离线编译shader库(hlslcc)实现统一的shader语法，离线编译为各个平台。
   5. 材质系统。 类似unity shaderlab语法，支持定义属性、渲染队列、sub shader。
   6. RHI。 抽象出RHI接口，用bgfx adapt去实现。目前支持dx11和opengl渲染。
-  4. ECS。 Scene包含一个root gameobject，GameObject包含一组Component，目前实现了LightComponent CameraComponent TransformComponent RenderComponent
   7. 编辑器。 界面操作参考unity编辑器，采用命令系统处理用户操作。scene game分别创建一个场景，每一个用户操作都会分解成[1-N]个命令，命令系统会执行对应命令分别在两个场景执行命令，支持undo redo
   
 ## Screenshots
